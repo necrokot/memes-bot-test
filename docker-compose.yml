@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  docker-network-server:
+    build:
+      context: .
+    container_name: NetworkServer
+    hostname: NetworkServer
+    ports:
+      - '80:8080'
+    deploy:
+      restart_policy:
+        condition: on-failure
