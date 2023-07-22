@@ -1,0 +1,33 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Docker Compose Remote Deploy
+    # You may pin to the exact commit or the version.
+    # uses: chaplyk/docker-compose-remote-action@3eaa2b19b838388002713242381eaba56be1217c
+      uses: chaplyk/docker-compose-remote-action@v1.1
+      with:
+      # SSH private key used to connect to the docker host
+        ssh_key: ${{ secrets.SSH_KEY }}
+        # SSH user
+        ssh_user: ${{ secrets.SSH_USER }}
+        # Remote host where docker is running
+        ssh_host: ${{ secrets.SSH_HOST }}
+        # Docker compose filename.
+        compose_file: docker-compose.yml
+        # Pull docker images before deploying
+        pull: false
+        # Build docker images before deploying
+        build: true
