@@ -4,10 +4,16 @@ services:
   docker-network-server:
     build:
       context: .
-    container_name: NetworkServer
-    hostname: NetworkServer
+    container_name: TestEnvs
+    hostname: TestEnvs
+    secrets:
+      - api_token
     ports:
       - '80:8080'
     deploy:
       restart_policy:
         condition: on-failure
+
+secrets:
+  api_token:
+    environment: "API_TOKEN"

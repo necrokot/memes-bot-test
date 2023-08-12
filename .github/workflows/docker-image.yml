@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "test-ci-docker" ]
   pull_request:
     branches: [ "master" ]
 
@@ -31,5 +31,3 @@ jobs:
         pull: false
         # Build docker images before deploying
         build: true
-        # Pass tokens
-        options: "-e ${{ secrets.DISCORD_APITOKEN }} -e ${{ secrets.TELEGRAM_APITOKEN }}"
