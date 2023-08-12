@@ -16,4 +16,4 @@ services:
 
 secrets:
   api_token:
-    environment: "API_TOKEN"
+    file: /home/docker_user/my_secret.txt
