@@ -6,6 +6,8 @@ services:
       context: .
     container_name: TestEnvs
     hostname: TestEnvs
+    environment:
+      MY_API_TOKEN: api_token
     secrets:
       - api_token
     ports:
